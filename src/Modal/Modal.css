@@ -1,0 +1,8 @@
+.recipe-modal{
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 20px;
+}

@@ -4,8 +4,9 @@ import './Button.css';
 const Button = (props) => {
   return(
     // !!! Very important line
-    // Passing a prop that points to App.js, so i can use onClick event inside component
-    <button onClick={props.click}>Test</button>
+    // Passing a prop to App.js, that is method for onclick event, 
+    // 'addRecipeHandler' is method inside of App.js root file
+    <button onClick={props.click}>Add recipe</button>
   );
 }
 
