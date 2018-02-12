@@ -5,7 +5,7 @@ const Recipe = (props) => {
   return(
     <li className="single-recipe">
       <h2>{props.title}</h2>
-      <p>{props.ingredient}</p>
+      <p>{props.ingredients}</p>
     </li>
   );
 
