@@ -5,3 +5,7 @@
 
 - user can add/delete own recipe,
 - recipes are stored in local storage
+
+## Todo
+
+- App.js - next step is to grab data from modal and pass it to state.

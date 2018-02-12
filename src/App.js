@@ -22,8 +22,13 @@ class App extends Component {
   closeModalHandler = () =>{
     this.setState({showModal: false});
   }
-  addRecipeHandler = () => {
-    this.setState({showModal: false});
+  addRecipeHandler = (e) => {
+    const newRecipe = [this.state.recipes.title, this.state.recipes.ingredients];
+    this.setState(
+      {showModal: false,
+       
+      }  
+    );
   }
 
   render() {
@@ -32,7 +37,7 @@ class App extends Component {
     if(this.state.showModal){// if true show <Modal/>
       toggleModal = (
         <Modal close={this.closeModalHandler} add={this.addRecipeHandler}
-          title={this.addRecipeHandler} ingredients={this.addRecipeHandler}
+          title={this.state.recipes.title} ingredients={this.state.recipes.ingredients}
         />
       );
     }
