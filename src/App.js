@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from './Button/Button';
-import Recipe from './Recipe/Recipe';
-import Modal from './Modal/Modal';
+import Button from './Components/Button/Button';
+import Recipe from './Components/Recipe/Recipe';
+import Modal from './Components/Modal/Modal';
 
 class App extends Component {
   state = {
     showModal: false,
     recipes: [
-      {title: 'Spaghetti', ingredients: ['pasta', 'tomatoes']},
-      {title: 'Stinky Meat', ingredients:['meat', 'stench'] },
+      {id: 1, title: 'Spaghetti', ingredients: ['pasta', 'tomatoes']},
+      {id: 2, title: 'Stinky Meat', ingredients:['meat', 'stench'] },
     ],
   };
   // add recipe button function, for toggle add recipe modal
-  toggleModalHandler = () =>{
+  toggleModalHandler = () => {
     const doesShow = this.state.showModal;
     this.setState({showModal: !doesShow});
     //if doesShow is true, its convert to false and so on
   }
   //close button inside of modal
-  closeModalHandler = () =>{
+  closeModalHandler = () => {
     this.setState({showModal: false});
   }
   addRecipeHandler = (e) => {
-    const newRecipe = [this.state.recipes.title, this.state.recipes.ingredients];
+    const newRecipe = [this.recipes.title, this.recipes.ingredients];
     this.setState(
       {showModal: false,
-       
+       recipes: [...this.state.recipes, newRecipe]
       }  
     );
+  }
+  deleteRecipe = (index) => {
+    let recipes = this.state.recipes.slice();
+    recipes.splice(index, 1);
+    this.setState({recipes});
   }
 
   render() {
@@ -37,16 +42,17 @@ class App extends Component {
     if(this.state.showModal){// if true show <Modal/>
       toggleModal = (
         <Modal close={this.closeModalHandler} add={this.addRecipeHandler}
-          title={this.state.recipes.title} ingredients={this.state.recipes.ingredients}
+          title={this.addRecipeHandler} ingredients={this.addRecipeHandler}
         />
       );
     }
     let recipeList = (
-      this.state.recipes.map((recipe) =>{
+      this.state.recipes.map((recipe, index) =>{
         // here was error, the begining of <Recipe /> must be within same line as return 
         return <Recipe 
         title={recipe.title} 
-        ingredients={recipe.ingredients} 
+        ingredients={recipe.ingredients}
+        key={recipe.id} 
          />
       })
     );
